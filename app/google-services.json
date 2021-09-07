@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "599659059598",
+    "project_id": "meetsapp-9ec07",
+    "storage_bucket": "meetsapp-9ec07.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599659059598:android:ecb2fb548e874fc8e6acdf",
+        "android_client_info": {
+          "package_name": "com.example.meetsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "599659059598-v4dkimth8rt0lc567mgmtkfqebdcqakb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASs5M7UfYstc1Hi_bCGvHNA4_9wlGKJAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "599659059598-v4dkimth8rt0lc567mgmtkfqebdcqakb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
