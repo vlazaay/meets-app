@@ -10,4 +10,3 @@ data class User(
     var human_preferences: String,
     var photo: String,
 )
-//(Ник, имя, возраст, знак задиака, предпочтения в еде, кого хочу найти на сайте, фото)

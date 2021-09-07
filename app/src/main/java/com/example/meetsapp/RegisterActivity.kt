@@ -1,28 +1,18 @@
 package com.example.meetsapp
 
-import android.R.attr
-import android.R.attr.*
+
 import android.app.ProgressDialog
 import android.content.Intent
-import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.example.meetsapp.api.RetrofitInstance
-import com.example.meetsapp.databinding.ActivityMainBinding
 import com.example.meetsapp.databinding.ActivityRegisterBinding
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.runBlocking
 import java.util.*
-import kotlin.concurrent.schedule
-import android.util.Patterns
-import android.widget.Toast
-import androidx.core.view.isVisible
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import java.net.URI
 import java.text.SimpleDateFormat
 
 
@@ -33,7 +23,6 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bindingClass = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
-
         bindingClass.btnUpload.setOnClickListener{
             selectImage()
         }
@@ -52,7 +41,6 @@ class RegisterActivity : AppCompatActivity() {
                 if (ImageUri != null){
                     uploadImage()
                 }
-
                 makeApiRequestPushUser()
                 goNavigation()
             }
@@ -86,7 +74,7 @@ class RegisterActivity : AppCompatActivity() {
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(intent, 100)
     }
-//
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
