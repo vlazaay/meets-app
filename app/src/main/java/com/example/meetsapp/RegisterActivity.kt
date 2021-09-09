@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import com.example.meetsapp.api.RetrofitInstance
 import com.example.meetsapp.databinding.ActivityRegisterBinding
 import kotlinx.coroutines.runBlocking
@@ -26,6 +28,18 @@ class RegisterActivity : AppCompatActivity() {
         bindingClass.btnUpload.setOnClickListener{
             selectImage()
         }
+        val options = arrayOf("male", "female")
+        bindingClass.gender.adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options)
+        bindingClass.gender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                ApplicationClass.userData.gender = options.get(p2)
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
         bindingClass.btnRegister.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
                 if (!validateNickname() or !validateName() or !validateAge() or !validateZodiac() or !validateMealPreferences() or !validateHumanPreferences()){
@@ -37,7 +51,6 @@ class RegisterActivity : AppCompatActivity() {
                 ApplicationClass.userData.zodiac = bindingClass.inputZodiac.text.toString()
                 ApplicationClass.userData.meal_preferences = bindingClass.mealPreferences.text.toString()
                 ApplicationClass.userData.human_preferences = bindingClass.humanPreferences.text.toString()
-                ApplicationClass.userData.photo = "images/"
                 if (ImageUri != null){
                     uploadImage()
                 }

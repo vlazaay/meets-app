@@ -9,4 +9,5 @@ data class User(
     var meal_preferences: String,
     var human_preferences: String,
     var photo: String,
+    var gender: String,
 )

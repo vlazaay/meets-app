@@ -40,6 +40,7 @@ class NavigationActivity : AppCompatActivity() {
                 ApplicationClass.userData.meal_preferences = data.get("meal_preferences").asString
                 ApplicationClass.userData.human_preferences = data.get("human_preferences").asString
                 ApplicationClass.userData.photo = data.get("photo").asString
+                ApplicationClass.userData.gender = data.get("gender").asString
 
                 Log.d("MYLOG", "user-data updated successfully")
                 type = 1

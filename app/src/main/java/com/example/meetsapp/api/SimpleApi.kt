@@ -18,7 +18,7 @@ interface SimpleApi {
 //        @Path("amount") amount: Int
 //    ): Response<String>
 //
-    @GET("api/meets-user-get/{deviceID}")
+    @GET("api/meetsgetuser/{deviceID}")
     suspend fun getUser(
         @Path("deviceID") deviceID: String?
     ): Response<JsonObject>

@@ -59,11 +59,11 @@ dependencies {
 
 
 
-    implementation 'com.facebook.android:facebook-android-sdk:11.1.0'
+//    implementation 'com.facebook.android:facebook-android-sdk:11.1.0'
 
 
-    implementation 'com.appsflyer:appsflyer-adobe-sdk-extension:6.+'
-    implementation 'com.android.installreferrer:installreferrer:1.1'
+    implementation 'com.appsflyer:appsflyer-adobe-sdk-extension:6.3.2'
+    implementation 'com.android.installreferrer:installreferrer:2.2'
 
     implementation 'com.squareup.okhttp3:okhttp:3.8.1'
 
