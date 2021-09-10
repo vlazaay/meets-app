@@ -22,4 +22,9 @@ interface SimpleApi {
     suspend fun getUser(
         @Path("deviceID") deviceID: String?
     ): Response<JsonObject>
+
+    @GET("api/pair/{deviceID}")
+    suspend fun getPair(
+        @Path("deviceID") deviceID: String?
+    ): Response<JsonObject>
 }

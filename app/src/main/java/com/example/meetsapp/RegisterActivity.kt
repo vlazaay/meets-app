@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType.TYPE_CLASS_NUMBER
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -29,7 +30,7 @@ class RegisterActivity : AppCompatActivity() {
             selectImage()
         }
         val options = arrayOf("male", "female")
-        bindingClass.gender.adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, options)
+        bindingClass.gender.adapter = ArrayAdapter<String>(this, R.layout.spinner, options)
         bindingClass.gender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 ApplicationClass.userData.gender = options.get(p2)
@@ -153,11 +154,14 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
     private fun validateAge(): Boolean {
-        val ageInput: String = bindingClass.inputAge.text.toString().trim()
+        val ageInput: String = bindingClass.inputAge.text.toString()
         return if (ageInput.isEmpty()) {
             bindingClass.inputAge.setError("Field can't be empty")
             false
-        }else {
+        }else if (ageInput.toInt() < 16) {
+            bindingClass.inputAge.setError("Age must be more than 16")
+            false
+        }else{
             bindingClass.inputAge.setError(null)
             true
         }

@@ -27,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_person"
@@ -52,7 +52,7 @@
         android:id="@+id/inputName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_person"
         android:drawablePadding="10dp"
@@ -74,17 +74,17 @@
 
 
     <EditText
+        android:inputType="number"
         android:id="@+id/inputAge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_person"
         android:drawablePadding="10dp"
         android:ems="10"
         app:errorEnabled="true"
         android:hint="Age"
-        android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -99,7 +99,7 @@
         android:id="@+id/inputZodiac"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_person"
         android:drawablePadding="10dp"
@@ -122,7 +122,7 @@
         android:id="@+id/meal_preferences"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_person"
         android:drawablePadding="10dp"
@@ -145,7 +145,7 @@
         android:id="@+id/human_preferences"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_person"
         android:drawablePadding="10dp"
@@ -165,11 +165,31 @@
         app:layout_constraintStart_toStartOf="@+id/meal_preferences"
         app:layout_constraintTop_toBottomOf="@+id/meal_preferences" />
 
+    <Spinner
+        android:id="@+id/gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/ic_person"
+        android:background="@drawable/input_bg"
+        android:ems="10"
+        android:outlineAmbientShadowColor="@android:color/white"
+        android:outlineSpotShadowColor="@android:color/white"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/colorWhite"
+
+        android:textColorHint="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="@+id/human_preferences"
+        app:layout_constraintStart_toStartOf="@+id/human_preferences"
+        app:layout_constraintTop_toBottomOf="@+id/human_preferences" />
+
+
     <Button
         android:id="@+id/btnUpload"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:text="Upload profile pic"
         app:layout_constraintStart_toStartOf="@+id/btnRegister"
         app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
@@ -180,15 +200,15 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/btn_bg"
         android:text="Register"
-        app:layout_constraintEnd_toEndOf="@+id/human_preferences"
-        app:layout_constraintStart_toStartOf="@+id/human_preferences"
-        app:layout_constraintTop_toBottomOf="@+id/human_preferences" />
+        app:layout_constraintEnd_toEndOf="@+id/gender"
+        app:layout_constraintStart_toStartOf="@+id/gender"
+        app:layout_constraintTop_toBottomOf="@+id/gender" />
 
     <ImageView
         android:id="@+id/firebaseImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="@+id/btnRegister"
         app:layout_constraintStart_toEndOf="@+id/btnUpload"
@@ -199,7 +219,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:text=""
         android:textColor="@color/colorWhite"
         android:textSize="15sp"
@@ -207,18 +227,12 @@
         app:layout_constraintStart_toEndOf="@+id/firebaseImage"
         app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 
-    <Spinner
-        android:id="@+id/gender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/btnUpload"
-        app:layout_constraintStart_toEndOf="@+id/btnUpload"
-        app:layout_constraintTop_toBottomOf="@+id/btnUpload"/>
+
 <!--    <TextView-->
 <!--        android:id="@+id/alreadyHaveAccount"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginTop="10dp"-->
 <!--        android:shadowColor="@color/colorWhite"-->
 <!--        android:text="Already Have an Account?"-->
 <!--        android:textColor="@color/colorWhite"-->
