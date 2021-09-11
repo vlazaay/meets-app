@@ -88,7 +88,7 @@
                 android:background="@drawable/round_button_with_border"
                 android:padding="10dp"
                 android:src="@drawable/ic_comment"
-                android:onClick="chat"/>
+                />
 
 
 <!--            <ImageButton-->

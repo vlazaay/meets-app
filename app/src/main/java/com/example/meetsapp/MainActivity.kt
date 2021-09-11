@@ -4,12 +4,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DiffUtil.DiffResult
+import com.cometchat.pro.core.CometChat
+import com.cometchat.pro.exceptions.CometChatException
+import com.cometchat.pro.models.User
 import com.example.meetsapp.api.RetrofitInstance
 import com.example.meetsapp.model.ItemModel
 import com.yuyakaido.android.cardstackview.*
@@ -37,6 +42,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val chat = findViewById<ImageButton>(R.id.commentbtn)
+        chat.setOnClickListener{
+            chat()
+        }
         val cardStackView = findViewById<CardStackView>(R.id.card_stack_view)
         manager = CardStackLayoutManager(this, object : CardStackListener {
             override fun onCardDragging(direction: Direction, ratio: Float) {
@@ -47,12 +57,14 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "onCardSwiped: p=" + manager!!.topPosition + " d=" + direction)
                 if (direction == Direction.Right) {
                     Toast.makeText(this@MainActivity, "Direction Right", Toast.LENGTH_SHORT).show()
+                    chat()
                 }
                 if (direction == Direction.Top) {
                     Toast.makeText(this@MainActivity, "Direction Top", Toast.LENGTH_SHORT).show()
                 }
                 if (direction == Direction.Left) {
                     Toast.makeText(this@MainActivity, "Direction Left", Toast.LENGTH_SHORT).show()
+                    chat()
                 }
                 if (direction == Direction.Bottom) {
                     Toast.makeText(this@MainActivity, "Direction Bottom", Toast.LENGTH_SHORT).show()
@@ -138,7 +150,7 @@ class MainActivity : AppCompatActivity() {
                     data.get("photo").asString,
                 )
                 ApplicationClass.userData.name = data.get("name").asString
-                Log.d("MYLOG", "pair updated successfully")
+              //  Log.d("MYLOG", "pair updated successfully")
             }else{
                 Log.e("MYLOG", "pair does not exists")
             }
@@ -152,8 +164,19 @@ class MainActivity : AppCompatActivity() {
     fun dislike(view: View) {
         return
     }
-    fun chat(view: View){
+    fun chat(){
+         val UID = "SUPERHERO1" // Replace with the UID of the user to login
+         val AUTH_KEY = "653632456a2c3892b8a87e31a49df72e4b5add69" // Replace with your App Auth Key
+//        Log.d("MYLOG", "Login Successful : ")
+        CometChat.login(UID, AUTH_KEY, object : CometChat.CallbackListener<User?>() {
+            override fun onSuccess(user: User?) {
+                Log.d(TAG, "Login Successful : "+user.toString())
+            }
 
+            override fun onError(e: CometChatException) {
+                Log.d(TAG, "Login failed with exception: " + e.message);
+            }
+        })
     }
 
 }

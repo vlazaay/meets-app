@@ -62,7 +62,7 @@ public class CardStackAdapter extends RecyclerView.Adapter<CardStackAdapter.View
         void setData(ItemModel data) {
             StorageReference storageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://meetsapp-9ec07.appspot.com").child(data.getPhoto()+".png");
 //            StorageReference pathReference = storageRef.child("images/cross.png");
-            Log.d("MYLOG", storageRef.getDownloadUrl().toString());
+           // Log.d("MYLOG", storageRef.getDownloadUrl().toString());
 
             storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override

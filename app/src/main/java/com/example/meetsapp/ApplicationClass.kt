@@ -2,11 +2,15 @@ package com.example.meetsapp
 
 
 import android.app.Application
+import android.content.ContentValues.TAG
 import android.util.Log
 import com.android.installreferrer.api.InstallReferrerClient
 import com.android.installreferrer.api.InstallReferrerStateListener
 import com.android.installreferrer.api.ReferrerDetails
 import com.appsflyer.AppsFlyerLib
+import com.cometchat.pro.core.AppSettings
+import com.cometchat.pro.core.CometChat
+import com.cometchat.pro.exceptions.CometChatException
 import com.example.meetsapp.model.User
 import com.onesignal.OneSignal
 
@@ -17,10 +21,24 @@ class ApplicationClass : Application() {
     companion object {
         private const val ONESIGNAL_APP_ID = "ba6c621d-eff8-4107-84c8-5838cd29056a"
         private const val APPFLYER_APP_ID = "R62LEuE7pioe7KeMAUsHY7"
+        private val appMessageID = "1935958b3ec1a856"
+        private val regionMessage = "eu"
         var userData : User = User("", "", "" , 0, "", "", "", "","")
     }
     override fun onCreate() {
         super.onCreate()
+
+        // OneSignal Initialization
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE)
+        OneSignal.initWithContext(this)
+        OneSignal.setAppId(ONESIGNAL_APP_ID)
+        val device = OneSignal.getDeviceState()
+//        Log.println(Log.DEBUG, "MYLOG", device!!.userId)
+        if (device != null) {
+            var userid= device.userId
+            userData.deviceID = userid
+        }
+        Log.println(Log.DEBUG, "MYLOG", "id - ${userData.deviceID}")
         //AppFlyer Initialization
 //        AppsFlyerLib.getInstance().init(APPFLYER_APP_ID, null, this)
 //        AppsFlyerLib.getInstance().start(this)
@@ -63,13 +81,18 @@ class ApplicationClass : Application() {
 
 
 
-        // OneSignal Initialization
-        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE)
-        OneSignal.initWithContext(this)
-        OneSignal.setAppId(ONESIGNAL_APP_ID)
-        val device = OneSignal.getDeviceState()
-        var userid = device!!.userId
-        userData.deviceID = userid
-        Log.println(Log.DEBUG, "MYLOG", "id - ${userData.deviceID}")
+
+
+        val appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(regionMessage).build()
+
+        CometChat.init(this, appMessageID, appSettings, object : CometChat.CallbackListener<String>() {
+            override fun onSuccess(successMessage: String) {
+                Log.d("MYLOG", "Initialization completed successfully")
+            }
+
+            override fun onError(e: CometChatException) {
+                Log.d("MYLOG", "Initialization failed with exception: "+e.message)
+            }
+        })
     }
 }
