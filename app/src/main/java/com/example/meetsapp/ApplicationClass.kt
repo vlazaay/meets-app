@@ -3,6 +3,7 @@ package com.example.meetsapp
 
 import android.app.Application
 import android.content.ContentValues.TAG
+import android.os.SystemClock.sleep
 import android.util.Log
 import com.android.installreferrer.api.InstallReferrerClient
 import com.android.installreferrer.api.InstallReferrerStateListener
@@ -20,7 +21,7 @@ class ApplicationClass : Application() {
 
     companion object {
         private const val ONESIGNAL_APP_ID = "ba6c621d-eff8-4107-84c8-5838cd29056a"
-        private const val APPFLYER_APP_ID = "R62LEuE7pioe7KeMAUsHY7"
+        private const val APPFLYER_APP_ID = "nUgqyC72Y9uKoWYEGKdU9g"
         private val appMessageID = "1935958b3ec1a856"
         private val regionMessage = "eu"
         var userData : User = User("", "", "" , 0, "", "", "", "","")
@@ -34,15 +35,19 @@ class ApplicationClass : Application() {
         OneSignal.setAppId(ONESIGNAL_APP_ID)
         val device = OneSignal.getDeviceState()
 //        Log.println(Log.DEBUG, "MYLOG", device!!.userId)
-        if (device != null) {
-            var userid= device.userId
+            var userid= device?.userId
+        if (userid != null) {
             userData.deviceID = userid
+        }else{
+            sleep(3000)
+            userData.deviceID = userid.toString()
         }
+
         Log.println(Log.DEBUG, "MYLOG", "id - ${userData.deviceID}")
         //AppFlyer Initialization
-//        AppsFlyerLib.getInstance().init(APPFLYER_APP_ID, null, this)
-//        AppsFlyerLib.getInstance().start(this)
-//        AppsFlyerLib.getInstance().setDebugLog(true)
+        AppsFlyerLib.getInstance().init(APPFLYER_APP_ID, null, this)
+        AppsFlyerLib.getInstance().start(this)
+        AppsFlyerLib.getInstance().setDebugLog(true)
 
         //Install Referrer
 //        referrerClient = InstallReferrerClient.newBuilder(this).build()

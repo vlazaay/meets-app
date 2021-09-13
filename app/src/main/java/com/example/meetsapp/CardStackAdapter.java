@@ -84,14 +84,6 @@ public class CardStackAdapter extends RecyclerView.Adapter<CardStackAdapter.View
                     Log.d("MYLOG", exception.getMessage());
                 }
             });
-//            Picasso.get()
-//                    .load(data.getPhoto())
-//                    .fit()
-//                    .centerCrop()
-//                    .into(image);
-//            nama.setText(data.getName());
-//            usia.setText(data.getAge());
-//            kota.setText(data.getGender());
         }
     }
 

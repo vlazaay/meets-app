@@ -12,3 +12,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MeetsApp"
 include ':app'
+include ':uikit-kotlin'

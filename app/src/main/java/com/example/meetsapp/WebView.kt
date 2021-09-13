@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebViewClient
+import com.appsflyer.AFInAppEventParameterName
+import com.appsflyer.AFInAppEventType
+import com.appsflyer.AppsFlyerLib
 import com.example.meetsapp.databinding.ActivityWebViewBinding
 
 class WebView : AppCompatActivity() {
@@ -15,6 +18,7 @@ class WebView : AppCompatActivity() {
             setContentView(bindingClass.root)
             webViewSetup()
         }
+
         private fun webViewSetup(){
             bindingClass.webview.webViewClient = WebViewClient()
 
@@ -23,6 +27,12 @@ class WebView : AppCompatActivity() {
             }
         }
         fun goGame(view: View) {
+//            val eventValues = HashMap<String, Any>()
+//            eventValues[AFInAppEventParameterName.SCORE] = 1
+//
+//            AppsFlyerLib.getInstance().logEvent(
+//                applicationContext,
+//                AFInAppEventType.AD_CLICK , eventValues)
             val i = Intent(this, RegisterActivity::class.java)
             startActivity(i)
         }

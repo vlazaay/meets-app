@@ -3,8 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/OpenServer/domains/MeetsApp/app/src/main/res/layout-land/activity_register.xml" value="0.1" />
+        <entry key="..\:/OpenServer/domains/MeetsApp/app/src/main/res/layout-land/activity_web_view.xml" value="0.40260416666666665" />
         <entry key="..\:/OpenServer/domains/MeetsApp/app/src/main/res/layout/activity_chat.xml" value="0.25052083333333336" />
         <entry key="..\:/OpenServer/domains/MeetsApp/app/src/main/res/layout/activity_main.xml" value="0.19285714285714287" />
+        <entry key="..\:/OpenServer/domains/MeetsApp/app/src/main/res/layout/activity_register.xml" value="0.25416666666666665" />
+        <entry key="..\:/OpenServer/domains/MeetsApp/app/src/main/res/layout/activity_web_view.xml" value="0.264" />
+        <entry key="..\:/OpenServer/domains/MeetsApp/uikit-kotlin/src/main/res/layouts/cometchat_ui/layout/activity_cometchat_unified.xml" value="0.10052083333333334" />
+        <entry key="..\:/OpenServer/domains/MeetsApp/uikit-kotlin/src/main/res/layouts/messagebubbles/layout/thread_location_message_item.xml" value="0.25052083333333336" />
+        <entry key="..\:/OpenServer/domains/MeetsApp/uikit-kotlin/src/main/res/layouts/messages/layout/activity_cometchat_message_list.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/vlazaay/AndroidStudioProjects/MeetsApp/app/src/main/res/drawable-v24/btn_bg.xml" value="0.2703125" />
         <entry key="..\:/Users/vlazaay/AndroidStudioProjects/MeetsApp/app/src/main/res/drawable-v24/gradation_black.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/vlazaay/AndroidStudioProjects/MeetsApp/app/src/main/res/drawable-v24/ic_email.xml" value="0.2703125" />

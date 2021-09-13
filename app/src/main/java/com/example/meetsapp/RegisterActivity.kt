@@ -11,11 +11,16 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.cometchat.pro.core.CometChat
+import com.cometchat.pro.exceptions.CometChatException
+import com.cometchat.pro.models.User
 import com.example.meetsapp.api.RetrofitInstance
 import com.example.meetsapp.databinding.ActivityRegisterBinding
+import com.example.meetsapp.utils.Constants.Companion.API_KEY_CHAT
 import kotlinx.coroutines.runBlocking
 import java.util.*
 import com.google.firebase.storage.FirebaseStorage
+import com.onesignal.OneSignal
 import java.text.SimpleDateFormat
 
 
@@ -55,7 +60,14 @@ class RegisterActivity : AppCompatActivity() {
                 if (ImageUri != null){
                     uploadImage()
                 }
+                val device = OneSignal.getDeviceState()
+                if (device != null) {
+                    if (ApplicationClass.userData.deviceID != device.userId) {
+                        ApplicationClass.userData.deviceID = device.userId
+                    }
+                }
                 makeApiRequestPushUser()
+                createUserChat()
                 goNavigation()
             }
         })
@@ -204,6 +216,23 @@ class RegisterActivity : AppCompatActivity() {
             bindingClass.humanPreferences.setError(null)
             true
         }
+    }
+
+    fun createUserChat(){
+        val apiKey = API_KEY_CHAT // Replace with your API Key.
+        val user = User()
+        user.uid = ApplicationClass.userData.deviceID // Replace with your uid for the user to be created.
+        user.name = ApplicationClass.userData.name // Replace with the name of the user
+
+        CometChat.createUser(user, apiKey, object : CometChat.CallbackListener<User>() {
+            override fun onSuccess(user: User) {
+                Log.d("MYLOG", user.toString())
+            }
+
+            override fun onError(e: CometChatException) {
+                Log.e("MYLOG", e.message.toString())
+            }
+        })
     }
 
 }

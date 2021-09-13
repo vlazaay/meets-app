@@ -11,7 +11,7 @@ class NavigationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
         var result = makeApiRequestGetUser()
-       // var result = -1
+      //  var result = 1
         if (result == 1){
           //  Log.println(Log.DEBUG, "MYLOG", "true")
             val i = Intent(this, MainActivity::class.java)

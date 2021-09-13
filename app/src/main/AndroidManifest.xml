@@ -27,7 +27,8 @@
             android:exported="true" />
         <activity
             android:name=".WebView"
-            android:exported="true" />
+            android:exported="true"
+            />
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />

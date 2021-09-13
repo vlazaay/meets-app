@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,236 +7,238 @@
     tools:context=".RegisterActivity"
     android:background="@drawable/bb">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:textColor="@color/colorWhite"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.05" />
 
-    <TextView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:textColor="@color/colorWhite"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        <EditText
+            android:id="@+id/inputNickname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/input_bg"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            app:counterEnabled="true"
+            app:counterMaxLength="15"
+            app:errorEnabled="true"
+            android:hint="Nickname"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-    <EditText
-        android:id="@+id/inputNickname"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_person"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        app:counterEnabled="true"
-        app:counterMaxLength="15"
-        app:errorEnabled="true"
-        android:hint="Nickname"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-    <EditText
-        android:id="@+id/inputName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_person"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        app:counterEnabled="true"
-        app:counterMaxLength="15"
-        app:errorEnabled="true"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="@+id/inputNickname"
-        app:layout_constraintStart_toStartOf="@+id/inputNickname"
-        app:layout_constraintTop_toBottomOf="@+id/inputNickname" />
-
-
-    <EditText
-        android:inputType="number"
-        android:id="@+id/inputAge"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_person"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        app:errorEnabled="true"
-        android:hint="Age"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="@+id/inputName"
-        app:layout_constraintStart_toStartOf="@+id/inputName"
-        app:layout_constraintTop_toBottomOf="@+id/inputName" />
-
-    <EditText
-        android:id="@+id/inputZodiac"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_person"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        app:counterEnabled="true"
-        app:counterMaxLength="15"
-        app:errorEnabled="true"
-        android:hint="Zodiac"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="@+id/inputAge"
-        app:layout_constraintStart_toStartOf="@+id/inputAge"
-        app:layout_constraintTop_toBottomOf="@+id/inputAge" />
-    <EditText
-        android:id="@+id/meal_preferences"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_person"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        app:counterEnabled="true"
-        app:counterMaxLength="255"
-        app:errorEnabled="true"
-        android:hint="Meal preferences"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="@+id/inputZodiac"
-        app:layout_constraintStart_toStartOf="@+id/inputZodiac"
-        app:layout_constraintTop_toBottomOf="@+id/inputZodiac" />
-    <EditText
-        android:id="@+id/human_preferences"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_person"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        app:counterEnabled="true"
-        app:counterMaxLength="255"
-        app:errorEnabled="true"
-        android:hint="I`m looking for..."
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="@+id/meal_preferences"
-        app:layout_constraintStart_toStartOf="@+id/meal_preferences"
-        app:layout_constraintTop_toBottomOf="@+id/meal_preferences" />
-
-    <Spinner
-        android:id="@+id/gender"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:drawableStart="@drawable/ic_person"
-        android:background="@drawable/input_bg"
-        android:ems="10"
-        android:outlineAmbientShadowColor="@android:color/white"
-        android:outlineSpotShadowColor="@android:color/white"
-        android:paddingLeft="20dp"
-        android:paddingRight="10dp"
-        android:textColor="@color/colorWhite"
-
-        android:textColorHint="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="@+id/human_preferences"
-        app:layout_constraintStart_toStartOf="@+id/human_preferences"
-        app:layout_constraintTop_toBottomOf="@+id/human_preferences" />
+        <EditText
+            android:id="@+id/inputName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            app:counterEnabled="true"
+            app:counterMaxLength="15"
+            app:errorEnabled="true"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="@+id/inputNickname"
+            app:layout_constraintStart_toStartOf="@+id/inputNickname"
+            app:layout_constraintTop_toBottomOf="@+id/inputNickname" />
 
 
-    <Button
-        android:id="@+id/btnUpload"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Upload profile pic"
-        app:layout_constraintStart_toStartOf="@+id/btnRegister"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/btn_bg"
-        android:text="Register"
-        app:layout_constraintEnd_toEndOf="@+id/gender"
-        app:layout_constraintStart_toStartOf="@+id/gender"
-        app:layout_constraintTop_toBottomOf="@+id/gender" />
+        <EditText
+            android:inputType="number"
+            android:id="@+id/inputAge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            app:errorEnabled="true"
+            android:hint="Age"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="@+id/inputName"
+            app:layout_constraintStart_toStartOf="@+id/inputName"
+            app:layout_constraintTop_toBottomOf="@+id/inputName" />
 
-    <ImageView
-        android:id="@+id/firebaseImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/btnRegister"
-        app:layout_constraintStart_toEndOf="@+id/btnUpload"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+        <EditText
+            android:id="@+id/inputZodiac"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            app:counterEnabled="true"
+            app:counterMaxLength="15"
+            app:errorEnabled="true"
+            android:hint="Zodiac"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="@+id/inputAge"
+            app:layout_constraintStart_toStartOf="@+id/inputAge"
+            app:layout_constraintTop_toBottomOf="@+id/inputAge" />
+        <EditText
+            android:id="@+id/meal_preferences"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            app:counterEnabled="true"
+            app:counterMaxLength="255"
+            app:errorEnabled="true"
+            android:hint="Meal preferences"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="@+id/inputZodiac"
+            app:layout_constraintStart_toStartOf="@+id/inputZodiac"
+            app:layout_constraintTop_toBottomOf="@+id/inputZodiac" />
+        <EditText
+            android:id="@+id/human_preferences"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            app:counterEnabled="true"
+            app:counterMaxLength="255"
+            app:errorEnabled="true"
+            android:hint="I`m looking for..."
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="@+id/meal_preferences"
+            app:layout_constraintStart_toStartOf="@+id/meal_preferences"
+            app:layout_constraintTop_toBottomOf="@+id/meal_preferences" />
 
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
-        android:text=""
-        android:textColor="@color/colorWhite"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/firebaseImage"
-        app:layout_constraintStart_toEndOf="@+id/firebaseImage"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+        <Spinner
+            android:id="@+id/gender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/ic_person"
+            android:background="@drawable/input_bg"
+            android:ems="10"
+            android:outlineAmbientShadowColor="@android:color/white"
+            android:outlineSpotShadowColor="@android:color/white"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/colorWhite"
+
+            android:textColorHint="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="@+id/human_preferences"
+            app:layout_constraintStart_toStartOf="@+id/human_preferences"
+            app:layout_constraintTop_toBottomOf="@+id/human_preferences" />
 
 
-<!--    <TextView-->
-<!--        android:id="@+id/alreadyHaveAccount"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:shadowColor="@color/colorWhite"-->
-<!--        android:text="Already Have an Account?"-->
-<!--        android:textColor="@color/colorWhite"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/btnRegister"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/btnRegister"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />-->
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Upload profile pic"
+            app:layout_constraintStart_toStartOf="@+id/btnRegister"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/btn_bg"
+            android:text="Register"
+            app:layout_constraintEnd_toEndOf="@+id/gender"
+            app:layout_constraintStart_toStartOf="@+id/gender"
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+        <ImageView
+            android:id="@+id/firebaseImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintEnd_toEndOf="@+id/btnRegister"
+            app:layout_constraintStart_toEndOf="@+id/btnUpload"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:text=""
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/firebaseImage"
+            app:layout_constraintStart_toEndOf="@+id/firebaseImage"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    <TextView-->
+    <!--        android:id="@+id/alreadyHaveAccount"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:shadowColor="@color/colorWhite"-->
+    <!--        android:text="Already Have an Account?"-->
+    <!--        android:textColor="@color/colorWhite"-->
+    <!--        app:layout_constraintEnd_toEndOf="@+id/btnRegister"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/btnRegister"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />-->
+</androidx.core.widget.NestedScrollView>
