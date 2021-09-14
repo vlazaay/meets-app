@@ -6,40 +6,16 @@ import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.DiffUtil.DiffResult
-import com.cometchat.pro.core.CometChat
-import com.cometchat.pro.exceptions.CometChatException
-import com.cometchat.pro.models.User
-import com.cometchat.pro.uikit.ui_components.cometchat_ui.CometChatUI
-import com.cometchat.pro.uikit.ui_components.shared.cometchatConversations.CometChatConversation
 import com.example.meetsapp.api.RetrofitInstance
 import com.example.meetsapp.model.ItemModel
-import com.example.meetsapp.utils.Constants.Companion.AUTH_KEY
 import com.yuyakaido.android.cardstackview.*
 import kotlinx.coroutines.runBlocking
 import java.util.ArrayList
 
-//
-//import androidx.appcompat.app.AppCompatActivity
-//import android.os.Bundle
-//import com.example.meetsapp.databinding.ActivityMainBinding
-//
-//class MainActivity : AppCompatActivity() {
-//    lateinit var bindingClass : ActivityMainBinding
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        bindingClass = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(bindingClass.root)
-//
-//    }
-//}
 class MainActivity : AppCompatActivity() {
     private var manager: CardStackLayoutManager? = null
     private var adapter: CardStackAdapter? = null
@@ -128,16 +104,6 @@ class MainActivity : AppCompatActivity() {
             items.add(makeApiRequestGetPair())
             i++
         }
-//        items.add(ItemModel(R.drawable.sample1, "Markonah", "24", "Jember"))
-//        items.add(ItemModel(R.drawable.sample2, "Marpuah", "20", "Malang"))
-//        items.add(ItemModel(R.drawable.sample3, "Sukijah", "27", "Jonggol"))
-//        items.add(ItemModel(R.drawable.sample4, "Markobar", "18", "Bandung"))
-//        items.add(ItemModel(R.drawable.sample5, "Marmut", "19", "Hutan"))
-//        items.add(ItemModel(R.drawable.sample1, "Markonah", "24", "Jember"))
-//        items.add(ItemModel(R.drawable.sample2, "Marpuah", "20", "Malang"))
-//        items.add(ItemModel(R.drawable.sample3, "Sukijah", "27", "Jonggol"))
-//        items.add(ItemModel(R.drawable.sample4, "Markobar", "19", "Bandung"))
-//        items.add(ItemModel(R.drawable.sample5, "Marmut", "15", "Hutan"))
         return items
     }
     private fun makeApiRequestGetPair():ItemModel {
@@ -152,7 +118,6 @@ class MainActivity : AppCompatActivity() {
                     data.get("photo").asString,
                 )
                 ApplicationClass.userData.name = data.get("name").asString
-              //  Log.d("MYLOG", "pair updated successfully")
             }else{
                 Log.e("MYLOG", "pair does not exists")
             }
@@ -163,24 +128,8 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = "MainActivity"
     }
 
-    fun dislike(view: View) {
-        return
-    }
     fun chat(){
-
-         val UID = ApplicationClass.userData.deviceID // Replace with the UID of the user to login
-         val AUTH_KEY = AUTH_KEY // Replace with your App Auth Key
-        CometChat.login(UID, AUTH_KEY, object : CometChat.CallbackListener<User?>() {
-            override fun onSuccess(user: User?) {
-                startActivity(Intent(this@MainActivity, ChatActivity::class.java))
-//                startActivity(Intent(this@MainActivity, CometChatUI::class.java))
-
-            }
-
-            override fun onError(e: CometChatException) {
-                Log.d(TAG, "Login failed with exception: " + e.message);
-            }
-        })
+        startActivity(Intent(this@MainActivity, ChatActivity::class.java))
     }
 
 }

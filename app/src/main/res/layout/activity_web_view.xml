@@ -23,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:text="Принять"
-        android:onClick="goGame"/>
+        />
 
 
 

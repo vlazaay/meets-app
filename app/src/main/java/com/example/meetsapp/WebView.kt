@@ -3,11 +3,7 @@ package com.example.meetsapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.webkit.WebViewClient
-import com.appsflyer.AFInAppEventParameterName
-import com.appsflyer.AFInAppEventType
-import com.appsflyer.AppsFlyerLib
 import com.example.meetsapp.databinding.ActivityWebViewBinding
 
 class WebView : AppCompatActivity() {
@@ -17,6 +13,10 @@ class WebView : AppCompatActivity() {
             bindingClass = ActivityWebViewBinding.inflate(layoutInflater)
             setContentView(bindingClass.root)
             webViewSetup()
+            bindingClass.play.setOnClickListener{
+                val i = Intent(this, RegisterActivity::class.java)
+                startActivity(i)
+            }
         }
 
         private fun webViewSetup(){
@@ -25,15 +25,5 @@ class WebView : AppCompatActivity() {
             bindingClass.webview.apply {
                 loadUrl("https://ankova.ulcraft.com/")
             }
-        }
-        fun goGame(view: View) {
-//            val eventValues = HashMap<String, Any>()
-//            eventValues[AFInAppEventParameterName.SCORE] = 1
-//
-//            AppsFlyerLib.getInstance().logEvent(
-//                applicationContext,
-//                AFInAppEventType.AD_CLICK , eventValues)
-            val i = Intent(this, RegisterActivity::class.java)
-            startActivity(i)
         }
 }

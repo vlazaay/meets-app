@@ -1,27 +1,24 @@
 package com.example.meetsapp
 
 
-import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.InputType.TYPE_CLASS_NUMBER
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import com.cometchat.pro.core.CometChat
-import com.cometchat.pro.exceptions.CometChatException
-import com.cometchat.pro.models.User
+import android.widget.ProgressBar
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.meetsapp.api.RetrofitInstance
 import com.example.meetsapp.databinding.ActivityRegisterBinding
-import com.example.meetsapp.utils.Constants.Companion.API_KEY_CHAT
 import kotlinx.coroutines.runBlocking
-import java.util.*
 import com.google.firebase.storage.FirebaseStorage
 import com.onesignal.OneSignal
 import java.text.SimpleDateFormat
+import java.util.*
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -31,8 +28,17 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bindingClass = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
+        val getImage = registerForActivityResult(
+            ActivityResultContracts.GetContent(),
+            ActivityResultCallback{
+                ImageUri = it
+                bindingClass.firebaseImage.setImageURI(ImageUri)
+                val userfilename: String = ImageUri!!.getLastPathSegment().toString()
+                bindingClass.message.text = userfilename
+            }
+        )
         bindingClass.btnUpload.setOnClickListener{
-            selectImage()
+            getImage.launch("image/*")
         }
         val options = arrayOf("male", "female")
         bindingClass.gender.adapter = ArrayAdapter<String>(this, R.layout.spinner, options)
@@ -67,16 +73,17 @@ class RegisterActivity : AppCompatActivity() {
                     }
                 }
                 makeApiRequestPushUser()
-                createUserChat()
                 goNavigation()
             }
         })
     }
     private fun uploadImage(){
-        val progressDialog = ProgressDialog(this)
-        progressDialog.setMessage("Uploading File ...")
-        progressDialog.setCancelable(false)
-        progressDialog.show()
+        val progressBar = ProgressBar(this)
+        progressBar.setVisibility(View.VISIBLE)
+//        val progressDialog = ProgressDialog(this)
+//        progressDialog.setMessage("Uploading File ...")
+//        progressDialog.setCancelable(false)
+//        progressDialog.show()
 
         val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
         val now = Date()
@@ -86,31 +93,15 @@ class RegisterActivity : AppCompatActivity() {
         storageReference.putFile(ImageUri!!).
         addOnSuccessListener {
 //                Toast.makeText(applicationContext, "Successfuly uploaded", Toast.LENGTH_SHORT).show()
-            if (progressDialog.isShowing) progressDialog.dismiss()
+            if (progressBar.getVisibility() == View.VISIBLE) progressBar.setVisibility(View.GONE);
 
         }.addOnFailureListener{
             bindingClass.message.text = "Failed"
-            if (progressDialog.isShowing) progressDialog.dismiss()
+            if (progressBar.getVisibility() == View.VISIBLE) progressBar.setVisibility(View.GONE);
 //                Toast.makeText(applicationContext, "Failed", Toast.LENGTH_SHORT).show()
         }
     }
-    private fun selectImage(){
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(intent, 100)
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == 100 && resultCode == RESULT_OK){
-            ImageUri = data?.data!!
-            bindingClass.firebaseImage.setImageURI(ImageUri)
-            val userfilename: String = ImageUri!!.getLastPathSegment().toString()
-            bindingClass.message.text = userfilename
-        }
-    }
     fun goNavigation() {
         val i = Intent(this, NavigationActivity::class.java)
         startActivity(i)
@@ -216,23 +207,6 @@ class RegisterActivity : AppCompatActivity() {
             bindingClass.humanPreferences.setError(null)
             true
         }
-    }
-
-    fun createUserChat(){
-        val apiKey = API_KEY_CHAT // Replace with your API Key.
-        val user = User()
-        user.uid = ApplicationClass.userData.deviceID // Replace with your uid for the user to be created.
-        user.name = ApplicationClass.userData.name // Replace with the name of the user
-
-        CometChat.createUser(user, apiKey, object : CometChat.CallbackListener<User>() {
-            override fun onSuccess(user: User) {
-                Log.d("MYLOG", user.toString())
-            }
-
-            override fun onError(e: CometChatException) {
-                Log.e("MYLOG", e.message.toString())
-            }
-        })
     }
 
 }

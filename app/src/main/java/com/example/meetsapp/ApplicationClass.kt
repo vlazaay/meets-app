@@ -2,16 +2,10 @@ package com.example.meetsapp
 
 
 import android.app.Application
-import android.content.ContentValues.TAG
 import android.os.SystemClock.sleep
 import android.util.Log
 import com.android.installreferrer.api.InstallReferrerClient
-import com.android.installreferrer.api.InstallReferrerStateListener
-import com.android.installreferrer.api.ReferrerDetails
 import com.appsflyer.AppsFlyerLib
-import com.cometchat.pro.core.AppSettings
-import com.cometchat.pro.core.CometChat
-import com.cometchat.pro.exceptions.CometChatException
 import com.example.meetsapp.model.User
 import com.onesignal.OneSignal
 
@@ -87,17 +81,5 @@ class ApplicationClass : Application() {
 
 
 
-
-        val appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(regionMessage).build()
-
-        CometChat.init(this, appMessageID, appSettings, object : CometChat.CallbackListener<String>() {
-            override fun onSuccess(successMessage: String) {
-                Log.d("MYLOG", "Initialization completed successfully")
-            }
-
-            override fun onError(e: CometChatException) {
-                Log.d("MYLOG", "Initialization failed with exception: "+e.message)
-            }
-        })
     }
 }

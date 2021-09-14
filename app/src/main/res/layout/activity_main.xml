@@ -76,8 +76,7 @@
                 android:layout_alignParentTop="true"
                 android:background="@drawable/round_button_with_border"
                 android:padding="10dp"
-                android:src="@drawable/ic_dislike"
-                android:onClick="dislike"/>
+                android:src="@drawable/ic_dislike" />
 
             <ImageButton
                 android:id="@+id/commentbtn"

@@ -1,6 +1,11 @@
 ###############################################################################
 # General settings.
 ###############################################################################
+-dontwarn java.lang.**
+-dontwarn javax.lang.model.element.AnnotationValue
+-dontwarn java.lang.Object
+-dontwarn com.google.auto.common.AnnotationValues
+-dontwarn com.google.auto.common.**
 
 -verbose
 
@@ -16,8 +21,6 @@
 #-dontobfuscate
 
 # Specifically target Android.
-
--android
 
 
 ###############################################################################
@@ -43,7 +46,6 @@
 -if   class **$$StaticInjection
 -keep class <1>
 
--keepnames class dagger.Lazy
 
 # Preserve annotated and generated classes for Butterknife.
 
@@ -69,11 +71,7 @@
 #    <fields>;
 #}
 
--keepclassmembers,allowobfuscation class * {
-    @com.google.gson.annotations.SerializedName <fields>;
-}
 
--keep,allowobfuscation @interface com.google.gson.annotations.**
 
 
 ###############################################################################
@@ -124,4 +122,18 @@
     public java.lang.StringBuilder append(long);
     public java.lang.StringBuilder append(float);
     public java.lang.StringBuilder append(double);
+}
+
+-assumenosideeffects class kotlin.jvm.internal.Intrinsics {
+  public static void checkExpressionValueIsNotNull(java.lang.Object, java.lang.String);
+  public static void checkFieldIsNotNull(java.lang.Object, java.lang.String);
+  public static void checkFieldIsNotNull(java.lang.Object, java.lang.String, java.lang.String);
+  public static void checkNotNull(java.lang.Object);
+  public static void checkNotNull(java.lang.Object, java.lang.String);
+  public static void checkNotNullExpressionValue(java.lang.Object, java.lang.String);
+  public static void checkNotNullParameter(java.lang.Object, java.lang.String);
+  public static void checkParameterIsNotNull(java.lang.Object, java.lang.String);
+  public static void checkReturnedValueIsNotNull(java.lang.Object, java.lang.String);
+  public static void checkReturnedValueIsNotNull(java.lang.Object, java.lang.String, java.lang.String);
+  public static void throwUninitializedPropertyAccessException(java.lang.String);
 }
